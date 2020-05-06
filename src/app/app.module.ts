@@ -6,14 +6,23 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardsComponent } from './components/cards/cards.component';
 import { CardModule } from 'primeng/card';
+import { DataViewComponent } from './components/data-view/data-view.component';
+import {DataViewModule} from 'primeng/dataview';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardsComponent
+    CardsComponent,
+    DataViewComponent
   ],
   imports: [
+    ButtonModule,
+    InputTextModule,
+    DataViewModule,
     CardModule,
     BrowserModule,
     BrowserAnimationsModule,
