@@ -40,3 +40,22 @@ p-card .mortes{
   height: 200px;
   width: 100%;
 }
+
+.b-underline{
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+}
+
+.textConfirmed{
+  text-align: end;
+  color: red;
+}
+.textRecover{
+  text-align: end;
+  color: green;
+}
+.textDeath{
+  text-align: end;
+  color:dimgray;
+}

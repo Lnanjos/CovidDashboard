@@ -18,6 +18,7 @@ import { CoronaService } from './services/corona.service';
 import {registerLocaleData} from '@angular/common';
 import br from '@angular/common/locales/br';
 import { HeaderComponent } from './components/header/header.component';
+import {DropdownModule} from 'primeng/dropdown';
  
 registerLocaleData(br, 'pt-BR');
 
@@ -31,6 +32,7 @@ registerLocaleData(br, 'pt-BR');
     HeaderComponent
   ],
   imports: [
+    DropdownModule,
     HttpClientModule,
     ChartModule,
     ButtonModule,

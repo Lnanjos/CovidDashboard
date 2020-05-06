@@ -1,5 +1,53 @@
-<p-dataView [paginator]="true">
+<p-dataView *ngIf="summary != undefined" [paginator]="true" [rows]="9" 
+[value]="summary.Countries" [sortField]="sortField" [sortOrder]="sortOrder" >
   <p-header>
-    <p>Casos por país</p>
+    <div class="p-grid p-nogutter">
+      <div class="p-col">
+        Casos por país
+      </div>
+      <div class="p-col" style="text-align: end;">
+        <p-dropdown [options]="sortOptions" (onChange)="onSortChange($event)" 
+        [style]="{'min-width':'140px','line-height':'10px','max-height':'20pt'}"></p-dropdown>
+      </div>
+    </div>
+    <div class="p-grid p-nogutter">
+      <div class="p-col-5">
+        País
+      </div>
+      <div class="p-col-2 textConfirmed"> 
+        Casos
+      </div>
+      <div class="p-col-3 textRecover">
+        Recuperados
+      </div>
+      <div class="p-col-2 textDeath">
+        Mortes
+      </div>
+    </div>
   </p-header>
+  <ng-template let-country pTemplate="listItem">
+    <div class="p-grid p-nogutter b-underline">
+      <div class="p-col-5">
+        {{country.Country}}
+      </div>
+      <div class="p-col-2 textConfirmed">
+        {{country.TotalConfirmed}}
+        <p style="font-size: 10pt;">
+          (+{{country.NewConfirmed}})
+        </p>
+      </div>
+      <div class="p-col-3 textRecover">
+        {{country.TotalRecovered}}
+        <p style="font-size: 10pt;">
+          (+{{country.NewRecovered}})
+        </p>
+      </div>
+      <div class="p-col-2 textDeath">
+        {{country.TotalDeaths}}
+        <p style="font-size: 10pt;">
+          (+{{country.NewDeaths}})
+        </p>
+      </div>
+    </div>
+  </ng-template>
 </p-dataView>
