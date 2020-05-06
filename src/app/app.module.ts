@@ -10,16 +10,19 @@ import { DataViewComponent } from './components/data-view/data-view.component';
 import {DataViewModule} from 'primeng/dataview';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
-
+import {ChartModule} from 'primeng/chart';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CardsComponent,
-    DataViewComponent
+    DataViewComponent,
+    LineChartComponent
   ],
   imports: [
+    ChartModule,
     ButtonModule,
     InputTextModule,
     DataViewModule,
