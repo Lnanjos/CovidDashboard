@@ -7,13 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardsComponent } from './components/cards/cards.component';
 import { CardModule } from 'primeng/card';
 import { DataViewComponent } from './components/data-view/data-view.component';
-import {DataViewModule} from 'primeng/dataview';
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
-import {ChartModule} from 'primeng/chart';
+import { DataViewModule } from 'primeng/dataview';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { ChartModule } from 'primeng/chart';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { MapComponent } from './components/map/map.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { CoronaService } from './services/corona.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MapComponent } from './components/map/map.component';
     MapComponent
   ],
   imports: [
+    HttpClientModule,
     ChartModule,
     ButtonModule,
     InputTextModule,
@@ -33,7 +35,7 @@ import { MapComponent } from './components/map/map.component';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CoronaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
