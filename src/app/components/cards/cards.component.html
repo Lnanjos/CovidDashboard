@@ -2,18 +2,21 @@
   <div class="p-col-12 p-sm-4">
     <p-card styleClass="confirmados">
       <h2>{{summary.Global.TotalConfirmed|number}}</h2>
+      <p class="subheader">(+{{summary.Global.NewConfirmed|number}})</p>
       <p>Confirmados</p>
     </p-card>
   </div>
   <div class="p-col-12 p-sm-4">
     <p-card styleClass="recuperados">
       <h2>{{summary.Global.TotalRecovered|number}}</h2>
+      <p class="subheader">(+{{summary.Global.NewRecovered|number}})</p>
       <p>Recuperados</p>
     </p-card>
   </div>
   <div class="p-col-12 p-sm-4">
     <p-card styleClass="mortes">
       <h2>{{summary.Global.TotalDeaths|number}}</h2>
+      <p class="subheader">(+{{summary.Global.NewDeaths|number}})</p>
       <p>Mortes</p>
     </p-card>
   </div>

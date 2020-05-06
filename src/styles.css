@@ -59,3 +59,10 @@ p-card .mortes{
   text-align: end;
   color:dimgray;
 }
+
+.subheader {
+  padding-top: 0;
+  margin-bottom:-4px !important;
+  margin-top: -8px !important;
+  font-size: 12pt;
+}
