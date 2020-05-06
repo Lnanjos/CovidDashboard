@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoronaService } from './services/corona.service';
 import {registerLocaleData} from '@angular/common';
 import br from '@angular/common/locales/br';
+import { HeaderComponent } from './components/header/header.component';
  
 registerLocaleData(br, 'pt-BR');
 
@@ -26,7 +27,8 @@ registerLocaleData(br, 'pt-BR');
     CardsComponent,
     DataViewComponent,
     LineChartComponent,
-    MapComponent
+    MapComponent,
+    HeaderComponent
   ],
   imports: [
     HttpClientModule,
