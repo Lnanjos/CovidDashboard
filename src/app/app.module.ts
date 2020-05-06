@@ -15,6 +15,10 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
 import { MapComponent } from './components/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CoronaService } from './services/corona.service';
+import {registerLocaleData} from '@angular/common';
+import br from '@angular/common/locales/br';
+ 
+registerLocaleData(br, 'pt-BR');
 
 @NgModule({
   declarations: [

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CoronaService } from 'src/app/services/corona.service';
+import { Summary } from 'src/app/common/summary';
 
 @Component({
   selector: 'app-cards',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
 
-  constructor() { }
+  summary: Summary;
+
+  constructor(private coronaService: CoronaService) { }
 
   ngOnInit(): void {
-  }
 
+    this.coronaService.getSummary().subscribe(
+      data => { console.log(data); this.summary = data }
+    );
+  }
 }
