@@ -12,6 +12,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {ChartModule} from 'primeng/chart';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { MapComponent } from './components/map/map.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
     AppComponent,
     CardsComponent,
     DataViewComponent,
-    LineChartComponent
+    LineChartComponent,
+    MapComponent
   ],
   imports: [
     ChartModule,
