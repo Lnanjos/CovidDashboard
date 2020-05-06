@@ -28,9 +28,9 @@ p-card .confirmados{
 }
 
 p-card .recuperados{
-  background-image: linear-gradient(-90deg, seagreen, green);
+  background-image: linear-gradient(-90deg, mediumseagreen, green);
 }
 
 p-card .mortes{
-  background-image: linear-gradient(-90deg, lightgrey, dimgrey);
+  background-image: linear-gradient(-90deg, lightslategrey, dimgrey);
 }
