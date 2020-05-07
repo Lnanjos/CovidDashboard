@@ -16,9 +16,7 @@ export class LineChartComponent implements OnInit {
   constructor(private coronaService: CoronaService) { }
 
   ngOnInit(): void {
-    this.coronaService.getSummary().subscribe(
-      data => {this.summary = data; this.insertData();}
-    );
+    this.coronaService.sumBS.subscribe(data => {this.summary = data; this.insertData();} ); 
   }
 
 
