@@ -26,6 +26,8 @@ export class MapComponent implements OnInit {
 
   map: Map;
 
+  visibility: string = "visibilityMap";
+
   constructor(private coronaService: CoronaService) { }
 
   ngOnInit(): void {
@@ -83,8 +85,8 @@ export class MapComponent implements OnInit {
           })
         });
         this.map.addLayer(vectorLayer);
+        this.visibility = '';
       }
-
     }
   }
 }

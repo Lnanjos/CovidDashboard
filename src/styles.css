@@ -35,6 +35,9 @@ p-card .mortes{
   background-image: linear-gradient(-90deg, #778899, #696969);
 }
 
+.visibilityMap{
+  visibility: hidden;
+}
 
 .map {
   margin-top: 8px;
