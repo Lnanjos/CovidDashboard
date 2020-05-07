@@ -11,6 +11,7 @@ import Fill from 'ol/style/Fill'
 import Stroke from 'ol/style/Stroke';
 import { Summary } from 'src/app/common/summary';
 import { CoronaService } from 'src/app/services/corona.service';
+import countries from 'src/app/components/map/convertcsv.json'
 
 @Component({
   selector: 'app-map',
@@ -19,14 +20,19 @@ import { CoronaService } from 'src/app/services/corona.service';
 })
 export class MapComponent implements OnInit {
 
-  summary: Summary
+  summary: Summary;
+
+  features: Feature[];
+
+  map: Map;
 
   constructor(private coronaService: CoronaService) { }
 
   ngOnInit(): void {
-    this.coronaService.sumBS.subscribe(data => this.summary = data);
 
-    const map = new Map({
+    this.coronaService.sumBS.subscribe(data => { this.summary = data; this.loadCountries() });
+
+    this.map = new Map({
       target: 'map',
       layers: [
         new TileLayer({
@@ -38,26 +44,47 @@ export class MapComponent implements OnInit {
         zoom: 0
       })
     });
-
-
-    const circle: Circle = new Circle(fromLonLat([4.35247, 50.84673]), 1000000);
-    const circle2: Circle = new Circle([4.35247, 50.84673], 100000);
-
-    const feature = new Feature(circle);
-    const feature2 = new Feature(circle2);
-
-    let vectorLayer = new VectorLayer({
-      source: new VectorSource({
-        features: [feature, feature2]
-      }),
-      visible: true,
-      style: new Style({
-        fill: new Fill({ color: [255, 99, 71, 0.8] }),
-        stroke: new Stroke({ color: [255, 99, 71, 1], width: 1.5 })
-      })
-    });
-
-    map.addLayer(vectorLayer);
   }
 
+  loadCountries() {
+
+    if (this.summary != undefined) {
+      console.log('start');
+      countries.forEach(element => {
+        this.summary.Countries.forEach(country => {
+          if ((country.CountryCode != undefined) && (country.CountryCode === element.country)) {
+            country.Latitude = element.latitude;
+            country.Longitude = element.longitude;
+            if (country.TotalConfirmed > 0) {
+              if (this.features == undefined) {
+                this.features = [new Feature(
+                  new Circle(fromLonLat([country.Longitude, country.Latitude]), country.TotalConfirmed)
+                )]
+              } else {
+                this.features.push(new Feature(
+                  new Circle(fromLonLat([country.Longitude, country.Latitude]), country.TotalConfirmed)
+                ));
+              }
+              console.log(country.CountryCode + '-' + element.country);
+            }
+          }
+        });
+      });
+
+      if (this.features != undefined) {
+        let vectorLayer = new VectorLayer({
+          source: new VectorSource({
+            features: this.features
+          }),
+          visible: true,
+          style: new Style({
+            fill: new Fill({ color: [255, 99, 71, 0.8] }),
+            stroke: new Stroke({ color: [255, 99, 71, 1], width: 1.5 })
+          })
+        });
+        this.map.addLayer(vectorLayer);
+      }
+
+    }
+  }
 }

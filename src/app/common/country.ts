@@ -9,4 +9,6 @@ export class Country {
   NewRecovered: number;
   TotalRecovered: number;
   Date: Date;
+  Latitude: number = 0;
+  Longitude: number = 0;
 }
