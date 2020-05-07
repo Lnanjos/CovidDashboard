@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Summary } from 'src/app/common/summary';
+import { CoronaService } from 'src/app/services/corona.service';
 
 @Component({
   selector: 'app-line-chart',
@@ -6,25 +8,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./line-chart.component.css']
 })
 export class LineChartComponent implements OnInit {
+  
+  summary: Summary;
 
-  data: any;
-
-  constructor() { }
+  dados: any;
+  
+  constructor(private coronaService: CoronaService) { }
 
   ngOnInit(): void {
-    this.data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-          {
-              label: 'First Dataset',
-              data: [65, 59, 80, 81, 56, 55, 40]
-          },
-          {
-              label: 'Second Dataset',
-              data: [28, 48, 40, 19, 86, 27, 90]
-          }
-      ]
+    this.coronaService.getSummary().subscribe(
+      data => {this.summary = data; this.insertData();}
+    );
   }
+
+
+  insertData() {
+    if (this.summary != undefined) {
+      this.dados = {
+        labels: ['Ativos (Confirmados - Recuperados - Mortes)', 'Recuperados', 'Mortes'],
+        datasets: [
+          {
+            label: 'First Dataset',
+            data: [this.summary.Global.TotalConfirmed - this.summary.Global.TotalRecovered - this.summary.Global.TotalDeaths,
+            this.summary.Global.TotalRecovered, this.summary.Global.TotalDeaths],
+            backgroundColor: [
+              "#ff6347",
+              "#3cb371",
+              "#778899"
+            ],
+            hoverBackgroundColor: [
+              "#ff0000",
+              "#008000",
+              "#696969"
+            ]
+          }
+        ]
+      }
+    }
   }
 
 }

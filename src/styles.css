@@ -24,15 +24,15 @@ p-card p{
 }
 
 p-card .confirmados{
-  background-image: linear-gradient(-90deg, tomato, red);
+  background-image: linear-gradient(-90deg, #ff6347, #ff0000);
 }
 
 p-card .recuperados{
-  background-image: linear-gradient(-90deg, mediumseagreen, green);
+  background-image: linear-gradient(-90deg, #3cb371, #008000);
 }
 
 p-card .mortes{
-  background-image: linear-gradient(-90deg, lightslategrey, dimgrey);
+  background-image: linear-gradient(-90deg, #778899, #696969);
 }
 
 .map {
