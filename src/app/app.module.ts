@@ -15,10 +15,11 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
 import { MapComponent } from './components/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CoronaService } from './services/corona.service';
-import {registerLocaleData} from '@angular/common';
+import {registerLocaleData, DatePipe} from '@angular/common';
 import br from '@angular/common/locales/br';
 import { HeaderComponent } from './components/header/header.component';
 import {DropdownModule} from 'primeng/dropdown';
+import {DialogModule} from 'primeng/dialog';
  
 registerLocaleData(br, 'pt-BR');
 
@@ -32,6 +33,7 @@ registerLocaleData(br, 'pt-BR');
     HeaderComponent
   ],
   imports: [
+    DialogModule,
     DropdownModule,
     HttpClientModule,
     ChartModule,
@@ -43,7 +45,7 @@ registerLocaleData(br, 'pt-BR');
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [CoronaService],
+  providers: [CoronaService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

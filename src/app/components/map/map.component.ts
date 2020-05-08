@@ -67,7 +67,6 @@ export class MapComponent implements OnInit {
                   new Circle(fromLonLat([country.Longitude, country.Latitude]), country.TotalConfirmed)
                 ));
               }
-              console.log(country.CountryCode + '-' + element.country);
             }
           }
         });

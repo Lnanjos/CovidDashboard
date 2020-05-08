@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Summary } from '../common/summary';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Country } from '../common/country';
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +27,15 @@ export class CoronaService {
 
   getSummary():Observable<Summary>{
     const summaryUrl = this.baseUrl+"summary";
-     if(this.sum == undefined){
+    if(this.sum == undefined){
       this.sum = this.httpClient.get<Summary>(summaryUrl);
     }
     return this.sum;
   }
-
   
+  getDayOneAll(countrySlug:string):Observable<Country[]>{
+    const getAllURL = this.baseUrl+"/total/dayone/country/"+countrySlug;
+    return this.httpClient.get<Country[]>(getAllURL);
+  }
 
 }

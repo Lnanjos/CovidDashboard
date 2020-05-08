@@ -11,4 +11,8 @@ export class Country {
   Date: Date;
   Latitude: number = 0;
   Longitude: number = 0;
+  //to linechart in dataview
+  Confirmed: number;
+  Deaths: number;
+  Recovered: number;
 }

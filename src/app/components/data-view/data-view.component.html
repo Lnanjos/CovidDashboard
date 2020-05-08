@@ -1,24 +1,24 @@
-<p-dataView *ngIf="summary != undefined" [paginator]="true" [rows]="9" 
-[value]="summary.Countries" [sortField]="sortField" [sortOrder]="sortOrder" >
+<p-dataView *ngIf="summary != undefined" [paginator]="true" [rows]="9" [value]="summary.Countries"
+  [sortField]="sortField" [sortOrder]="sortOrder">
   <p-header>
     <div class="p-grid p-nogutter">
       <div class="p-col">
         Casos por país
       </div>
       <div class="p-col" style="text-align: end;">
-        <p-dropdown [options]="sortOptions" (onChange)="onSortChange($event)" 
-        [style]="{'min-width':'140px','line-height':'10px','max-height':'20pt'}"></p-dropdown>
+        <p-dropdown [options]="sortOptions" (onChange)="onSortChange($event)"
+          [style]="{'min-width':'140px','line-height':'10px','max-height':'20pt'}"></p-dropdown>
       </div>
     </div>
     <div class="p-grid p-nogutter">
       <div class="p-col-5">
         País
       </div>
-      <div class="p-col-2 textConfirmed"> 
+      <div class="p-col-2 textConfirmed">
         Casos
       </div>
-      <div class="p-col-3 textRecover">
-        Recuperados
+      <div class="p-col-2 textRecover">
+        Rec.
       </div>
       <div class="p-col-2 textDeath">
         Mortes
@@ -36,7 +36,7 @@
           (+{{country.NewConfirmed}})
         </p>
       </div>
-      <div class="p-col-3 textRecover">
+      <div class="p-col-2 textRecover">
         {{country.TotalRecovered}}
         <p style="font-size: 8pt;">
           (+{{country.NewRecovered}})
@@ -47,6 +47,14 @@
         <p style="font-size: 8pt;">
           (+{{country.NewDeaths}})
         </p>
+      </div>
+      <div class="p-col-1">
+        <button type="button" (click)="showDialog(country)" pButton icon="pi pi-info-circle" class="ui-button-rounded ui-button-secondary"></button>
+        <p-dialog *ngIf="selectCountry" header="{{selectCountry.Country}}" [(visible)]="display"
+          showEffect="fade" [maximizable]="true" [style]="{width: '380px'}" >
+          <p-chart *ngIf="downloadedChartData; else elseBlock" type='line' [data]='data'></p-chart>
+          <ng-template #elseBlock><p>Falha em acessar dados.</p></ng-template>
+        </p-dialog>
       </div>
     </div>
   </ng-template>
