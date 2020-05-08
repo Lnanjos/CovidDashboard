@@ -91,25 +91,27 @@ export class DataViewComponent implements OnInit {
       labels: labels,
       datasets: [
         {
-          label: 'Confirmados',
-          data: confirmed,
-          fill: false,
-          borderColor: '#4bc0c0'
+          label: 'Mortes',
+          data: deaths,
+          fill: true,
+          borderColor: '#77889980',
+          backgroundColor: '#77889980'
         },
         {
           label: 'Recuperados',
           data: recovered,
-          fill: false,
-          borderColor: '#565656'
+          fill: true,
+          borderColor: '#3cb371',
+          backgroundColor: '#3cb37180'
         },
         {
-          label: 'Mortes',
-          data: deaths,
-          fill: false,
-          borderColor: '#565000'
+          label: 'Confirmados',
+          data: confirmed,
+          fill: true,
+          borderColor: '#ff6347',
+          backgroundColor: '#ff634780'
         }
       ]
     }
-
   }
 }
