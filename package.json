@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
     "@types/geojson": "^7946.0.7",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "ol": "^6.3.1",
     "primeflex": "^1.0.0",
     "primeicons": "^2.0.0",
